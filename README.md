@@ -37,10 +37,10 @@ And you should be able to see the application in your browser! You can switch th
 
 1. You must now be very eager to play around with the app and mess it all right up now, but please have some courtesy!
    Before you make any changes:
-   ```bash
-   $ git checkout -b myfeature
-   $ git push origin myfeature
-   ```
+```bash
+$ git checkout -b myfeature
+$ git push origin myfeature
+```
    This creates a branch both locally and on Github! Now you can go ahead and write your CSI hacking code in Visual Basic or whatever.
 2. When you wanna check in your changes, *PLEASE DO NOT CHECK DIRECTLY INTO MASTER* 
 3. Instead, let's follow good etiquette and submit a pull request:
