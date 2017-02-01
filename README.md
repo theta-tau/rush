@@ -37,18 +37,20 @@ And you should be able to see the application in your browser! You can switch th
 
 1. You must now be very eager to play around with the app and mess it all right up now, but please have some courtesy!
    Before you make any changes:
-```bash
-$ git checkout -b myfeature
-$ git push origin myfeature
-```
-   This creates a branch both locally and on Github! Now you can go ahead and write your CSI hacking code in Visual Basic or whatever.
-2. When you wanna check in your changes, *PLEASE DO NOT CHECK DIRECTLY INTO MASTER* 
+    ```bash
+    $ git checkout -b myfeature
+    $ git push origin myfeature
+    ```
+  This creates a branch both locally and on Github! Now you can go ahead and write your CSI hacking code in Visual Basic or whatever.
+
+2. When you wanna check in your changes, _PLEASE DO NOT CHECK DIRECTLY INTO MASTER_
+
 3. Instead, let's follow good etiquette and submit a pull request:
-```bash
-$ git add .
-$ git commit -m "I added <feature> to <app> by adding <files> and changing <files>"
-$ git push origin myfeature
-```
+  ```bash
+  $ git add .
+  $ git commit -m "I added <feature> to <app> by adding <files> and changing <files>"
+  $ git push origin myfeature
+  ```
 
 4. Then go to the repository on Github and press the shiny new green button that says "submit pull request"!
 5. Type out a few meaningful comments about your changes and make the submission.
