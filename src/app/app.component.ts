@@ -5,6 +5,8 @@ import { StatusBar, Splashscreen } from 'ionic-native';
 import { SignUp } from '../pages/signup/signup';
 import { Home } from '../pages/home/home';
 
+import firebase from 'firebase';
+
 
 @Component({
   templateUrl: 'app.html'
@@ -17,6 +19,14 @@ export class MyApp {
   pages: Array<{title: string, component: any}>;
 
   constructor(public platform: Platform) {
+    firebase.initializeApp({
+      apiKey: "AIzaSyBA4UkjAykOVIqF_qtSpCM_aYABPJR_6OE",
+      authDomain: "rush-a5580.firebaseapp.com",
+      databaseURL: "https://rush-a5580.firebaseio.com",
+      storageBucket: "rush-a5580.appspot.com",
+      messagingSenderId: "206295143603"
+    });
+    
     this.initializeApp();
 
     // used for an example of ngFor and navigation

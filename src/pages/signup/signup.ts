@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
 
-import { ViewController, NavController } from 'ionic-angular';
-import { Validators, FormBuilder } from '@angular/forms';
+import { ViewController } from 'ionic-angular';
+
+import { Facebook } from 'ionic-native';
+import firebase from 'firebase';
 
 @Component({
   selector: 'signup',
@@ -13,43 +15,50 @@ import { Validators, FormBuilder } from '@angular/forms';
       </ion-navbar>
     </ion-header>
 
-    <h2>Spring Rush 2017 Signups!</h2>
-    <form [formGroup]="formData" (ngSubmit)="logForm()">
-      <ion-item>
-        <ion-label>First Name</ion-label>
-        <ion-input type="text" formControlName="firstName"></ion-input>
-      </ion-item>
-      <ion-item>
-        <ion-label>Last Name</ion-label>
-        <ion-textarea formControlName="lastName"></ion-textarea>
-      </ion-item>
-      <ion-item>
-        <ion-label>Email</ion-label>
-        <ion-textarea formControlName="email"></ion-textarea>
-      </ion-item>
-      <button ion-button type="submit" [disabled]="!formData.valid">Submit</button>
-    </form>
+    <ion-content padding>
+
+      <button ion-button outline center (click)="facebookLogin()">
+        Log In with Facebook
+      </button>
+
+      <ion-card *ngIf="userProfile">
+        <img [src]="userProfile.photoURL"/>
+        <ion-card-content>
+          <ion-card-title>
+            {{ userProfile.displayName }}
+          </ion-card-title>
+          <p>
+            The UID for this new user is {{userProfile.uid}} and the email is {{userProfile.email}}
+          </p>
+        </ion-card-content>
+      </ion-card>
+    </ion-content>
   `
 })
 export class SignUp {
 
-  formData;
+  userProfile: any = null;
 
-  constructor(private formBuilder: FormBuilder, public viewCtrl: ViewController) {
-    this.formData = formBuilder.group({
-      firstName: [null, Validators.required],
-      lastName: [null, Validators.required],
-      email: [null, Validators.required],
-    });
+  constructor(public viewCtrl: ViewController) {}
+
+  facebookLogin(){
+    Facebook.login(['email']).then( (response) => {
+      const facebookCredential = firebase.auth.FacebookAuthProvider
+        .credential(response.authResponse.accessToken);
+
+      firebase.auth().signInWithCredential(facebookCredential)
+      .then((success) => {
+        console.log("Firebase success: " + JSON.stringify(success));
+        this.userProfile = success;
+      })
+      .catch((error) => {
+        console.log("Firebase failure: " + JSON.stringify(error));
+      });
+
+    }).catch((error) => { console.log(error) });
   }
-
 
   dismiss() {
     this.viewCtrl.dismiss();
-  }
-
-  logForm() {
-    alert("You've signed up for Trump Supporters Daily! Thank you for your continued support of the United States of Shitters.");
-    this.dismiss();
   }
 }
