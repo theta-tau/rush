@@ -1,34 +1,33 @@
 import { Component } from '@angular/core';
 
-import { ModalController, NavController } from 'ionic-angular';
-import { SignUp } from '../signup/signup';
+import { NavController } from 'ionic-angular';
+
+import firebase from 'firebase';
+import { LoginPage } from '../login/login';
+import { AuthService } from '../../providers/auth-service';
 
 @Component({
   selector: 'home',
   template: `
-  <ion-header>
-    <ion-navbar>
-      <button ion-button menuToggle>
-        <ion-icon name="menu"></ion-icon>
-      </button>
-      <ion-title>Theta Tau @ UCLA</ion-title>
-    </ion-navbar>
-  </ion-header>
-
-  <ion-content padding class="center-icon" >
-    <h3>Sign-ups will be opening soon!</h3>
-    <button ion-button outline (click)="openModal()">Sign Up!</button>
-  </ion-content>
+  <ion-title>Home</ion-title>
+  <ion-buttons end>
+    <button ion-button color="primary" (click)="logout()">
+      <ion-icon ios="ios-exit" md="md-exit"></ion-icon>
+    </button>
+  </ion-buttons>
 `
 })
 export class Home {
 
-  constructor(public navCtrl: NavController, public modalCtrl: ModalController) {
-
+  constructor(public navCtrl: NavController, public authService: AuthService) {
+    firebase.auth().onAuthStateChanged(function(user) {
+      if (!user) {
+        navCtrl.setRoot(LoginPage);
+      }
+    });
   }
 
-  openModal(){
-    let modal = this.modalCtrl.create(SignUp);
-    modal.present();
+  logout() {
+    this.authService.doLogout();
   }
 }
