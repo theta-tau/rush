@@ -22,10 +22,16 @@ export class AuthService {
     return this.fireAuth.signInWithEmailAndPassword(email, password);
   }
 
-  register(email: string, password: string): any {
-    return this.fireAuth.createUserWithEmailAndPassword(email, password)
+  register(formData: any): any {
+    console.log(formData);
+    return this.fireAuth.createUserWithEmailAndPassword(formData.email, formData.password)
       .then((newUser) => {
-        this.userData.child(newUser.uid).set({email: email});
+        this.userData.child(newUser.uid).set({
+          email: formData.email,
+          fullname: formData.fullname,
+          major: formData.major,
+          year: formData.year
+        });
       });
   }
 

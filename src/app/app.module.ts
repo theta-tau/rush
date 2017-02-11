@@ -1,7 +1,6 @@
 import { NgModule, ErrorHandler } from '@angular/core';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
-import { SignUp } from '../pages/signup/signup';
 import { Home } from '../pages/home/home';
 
 import { AngularFireModule, AuthProviders, AuthMethods } from 'angularfire2';
@@ -30,7 +29,6 @@ const myFirebaseAuthConfig = {
 @NgModule({
   declarations: [
     MyApp,
-    SignUp,
     Home,
     LoginPage,
     RegisterPage,
@@ -43,7 +41,6 @@ const myFirebaseAuthConfig = {
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    SignUp,
     Home,
     LoginPage,
     RegisterPage,

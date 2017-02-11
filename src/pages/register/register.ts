@@ -20,6 +20,8 @@ export class RegisterPage {
   emailChanged: boolean = false;
   passwordChanged: boolean = false;
   fullnameChanged: boolean = false;
+  majorChanged: boolean = false;
+  yearChanged: boolean = false;
   submitAttempt: boolean = false;
   loading: any;
 
@@ -28,7 +30,9 @@ export class RegisterPage {
     this.registerForm = formBuilder.group({
       email: ['', Validators.compose([Validators.required, Validators.pattern(EMAIL_REGEXP)])],
       password: ['', Validators.compose([Validators.minLength(6), Validators.required])],
-      fullname: ['', [Validators.required, Validators.minLength(3), this.nameValidator.bind(this)]]
+      fullname: ['', [Validators.required, Validators.minLength(3), this.nameValidator.bind(this)]],
+      major: [''],
+      year: ['']
     });
   }
 
@@ -43,7 +47,7 @@ export class RegisterPage {
     if (!this.registerForm.valid){
       console.log(this.registerForm.value);
     } else {
-      this.authService.register(this.registerForm.value.email, this.registerForm.value.password).then( authService => {
+      this.authService.register(this.registerForm.value).then( authService => {
         
         this.loading.dismiss().then( () => {
           this.navCtrl.setRoot(Home);
