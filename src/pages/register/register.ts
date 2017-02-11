@@ -44,7 +44,11 @@ export class RegisterPage {
       console.log(this.registerForm.value);
     } else {
       this.authService.register(this.registerForm.value.email, this.registerForm.value.password).then( authService => {
-        this.navCtrl.setRoot(Home);
+        
+        this.loading.dismiss().then( () => {
+          this.navCtrl.setRoot(Home);
+        });
+        
       }, error => {
         this.loading.dismiss().then( () => {
           let alert = this.alertCtrl.create({
