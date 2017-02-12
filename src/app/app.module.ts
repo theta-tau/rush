@@ -9,6 +9,10 @@ import { LoginPage } from '../pages/login/login';
 import { RegisterPage } from '../pages/register/register';
 import { ResetpwdPage } from '../pages/resetpwd/resetpwd';
 
+import { SchedulePage } from '../pages/schedule/schedule';
+import { ProfilePage } from '../pages/profile/profile';
+import { CheckinPage } from '../pages/checkin/checkin';
+
 import firebase from 'firebase';
 
 export const firebaseConfig = {
@@ -32,7 +36,10 @@ const myFirebaseAuthConfig = {
     Home,
     LoginPage,
     RegisterPage,
-    ResetpwdPage
+    ResetpwdPage,
+    SchedulePage,
+    ProfilePage,
+    CheckinPage
   ],
   imports: [
     IonicModule.forRoot(MyApp),
@@ -44,7 +51,10 @@ const myFirebaseAuthConfig = {
     Home,
     LoginPage,
     RegisterPage,
-    ResetpwdPage
+    ResetpwdPage,
+    SchedulePage,
+    ProfilePage,
+    CheckinPage
   ],
   providers: [
     {provide: ErrorHandler, useClass: IonicErrorHandler},

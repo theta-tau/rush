@@ -6,13 +6,33 @@ import firebase from 'firebase';
 import { LoginPage } from '../login/login';
 import { AuthService } from '../../providers/auth-service';
 
+import { SchedulePage } from '../schedule/schedule';
+import { CheckinPage } from '../checkin/checkin';
+import { ProfilePage } from '../profile/profile';
+
 @Component({
   selector: 'home',
   template: `
   <ion-title>Home</ion-title>
   
   <ion-content padding center>
-    <h3>Welcome {{name}} !</h3>
+    <h3>Welcome {{name}}!</h3>
+
+    <br />
+    <br />
+
+    <ion-card (click)="goToSchedule()" padding tappable>
+      <h1>Schedule</h1>
+    </ion-card>
+    <ion-card (click)="goToCheckIn()" padding tappable>
+      <h1>Check-In</h1>
+    </ion-card>
+    <ion-card (click)="goToProfile()" padding tappable>
+      <h1>Profile</h1>
+    </ion-card>
+    <ion-card padding>
+      <h1>Gifts</h1>
+    </ion-card>
 
     <br />
     <br />
@@ -53,5 +73,17 @@ export class Home {
 
   logout() {
     this.authService.doLogout();
+  }
+
+  goToSchedule() {
+    this.navCtrl.push(SchedulePage);
+  }
+
+  goToCheckIn() {
+    this.navCtrl.push(CheckinPage);
+  }
+
+  goToProfile() {
+    this.navCtrl.push(ProfilePage);
   }
 }
