@@ -1,0 +1,67 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>register</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <h2>Register</h2>
+  <form [formGroup]="registerForm" (submit)="doRegister()" novalidate>
+    <ion-item>
+      <ion-label stacked>Email</ion-label>
+      <ion-input #email formControlName="email" type="email" (change)="elementChanged(email)"
+        placeholder="Your email address"
+        [class.invalid]="!registerForm.controls.email.valid && (emailChanged || submitAttempt)"></ion-input>
+    </ion-item>
+    <ion-item class="error-message" *ngIf="!registerForm.controls.email.valid  && (emailChanged || submitAttempt)">
+      <p>Please enter a valid email.</p>
+    </ion-item>
+
+    <ion-item>
+      <ion-label stacked>Password</ion-label>
+      <ion-input #password formControlName="password" type="password" (change)="elementChanged(password)"
+        placeholder="Your password"
+        [class.invalid]="!registerForm.controls.password.valid && (passwordChanged || submitAttempt)"></ion-input>
+    </ion-item>
+    <ion-item class="error-message" *ngIf="!registerForm.controls.password.valid  && (passwordChanged || submitAttempt)">
+      <p>Your password needs more than 6 characters.</p>
+    </ion-item>
+
+    <ion-item>
+      <ion-label stacked>Full Name</ion-label>
+      <ion-input #fullname formControlName="fullname" type="text" (change)="elementChanged(fullname)"
+        placeholder="Your Full Name"
+        [class.invalid]="!registerForm.controls.fullname.valid && (fullnameChanged || submitAttempt)"></ion-input>
+    </ion-item>
+    <ion-item class="error-message" *ngIf="!registerForm.controls.fullname.valid  && (fullnameChanged || submitAttempt)">
+      <p>Your full name can't be empty.</p>
+    </ion-item>
+
+    <ion-item>
+      <ion-label stacked>Major</ion-label>
+      <ion-input #major formControlName="major" type="text" (change)="elementChanged(major)"
+        placeholder="Major"
+        [class.invalid]="!registerForm.controls.major.valid && (majorChanged || submitAttempt)"></ion-input>
+    </ion-item>
+    <ion-item class="error-message" *ngIf="!registerForm.controls.major.valid  && (majorChanged || submitAttempt)">
+      <p>You must enter a major, or undeclared.</p>
+    </ion-item>
+
+    <ion-item>
+      <ion-label stacked>Year</ion-label>
+      <ion-input #year formControlName="year" type="text" (change)="elementChanged(year)"
+        placeholder="Year"
+        [class.invalid]="!registerForm.controls.year.valid && (yearChanged || submitAttempt)"></ion-input>
+    </ion-item>
+    <ion-item class="error-message" *ngIf="!registerForm.controls.year.valid  && (yearChanged || submitAttempt)">
+      <p>You must enter your year.</p>
+    </ion-item>
+
+    <button ion-button block type="submit">
+      Register
+    </button>
+  </form>
+</ion-content>

@@ -61,4 +61,9 @@ _Essentially, master branch should only contain merge commits! Please only work 
 
 _Credits to CS130 Google engineers: [Standard convention](https://docs.google.com/document/d/1LHh7r_Xsqe1OxMn5KrWoBd9gbq_50H_pOcUQw26fzlM/pub)_
    
+## TODO
 
+1. Splash page
+2. Animations/assets/photos
+3. Content - message from regent, schedule, locations, rewards, etc. 
+4. ADD TO THIS PLEASE
