@@ -9,6 +9,7 @@ import { AuthService } from '../../providers/auth-service';
 import { SchedulePage } from '../schedule/schedule';
 import { CheckinPage } from '../checkin/checkin';
 import { ProfilePage } from '../profile/profile';
+import { GiftsPage } from '../gifts/gifts';
 
 @Component({
   selector: 'home',
@@ -30,9 +31,10 @@ import { ProfilePage } from '../profile/profile';
     <ion-card (click)="goToProfile()" padding tappable>
       <h1>Profile</h1>
     </ion-card>
-    <ion-card padding>
+    <ion-card (click)="goToGifts()" padding tappable>
       <h1>Gifts</h1>
     </ion-card>
+   
 
     <br />
     <br />
@@ -85,5 +87,9 @@ export class Home {
 
   goToProfile() {
     this.navCtrl.push(ProfilePage);
+  }
+
+  goToGifts() {
+    this.navCtrl.push(GiftsPage);
   }
 }

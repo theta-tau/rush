@@ -13,6 +13,9 @@ import { SchedulePage } from '../pages/schedule/schedule';
 import { ProfilePage } from '../pages/profile/profile';
 import { CheckinPage } from '../pages/checkin/checkin';
 
+import { GiftsPage } from '../pages/gifts/gifts';
+
+
 import firebase from 'firebase';
 
 export const firebaseConfig = {
@@ -39,7 +42,8 @@ const myFirebaseAuthConfig = {
     ResetpwdPage,
     SchedulePage,
     ProfilePage,
-    CheckinPage
+    CheckinPage,
+    GiftsPage
   ],
   imports: [
     IonicModule.forRoot(MyApp),
@@ -54,7 +58,8 @@ const myFirebaseAuthConfig = {
     ResetpwdPage,
     SchedulePage,
     ProfilePage,
-    CheckinPage
+    CheckinPage,
+    GiftsPage
   ],
   providers: [
     {provide: ErrorHandler, useClass: IonicErrorHandler},
